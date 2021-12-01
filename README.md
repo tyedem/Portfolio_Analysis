@@ -27,7 +27,7 @@ For this homework assignment, you have three main tasks:
 * [algo_returns.csv](Starter_Code/Resources/algo_returns.csv)
 
 * [otex_historical.csv](Starter_Code/Resources/otex_historical.csv)
-
+z 
 * [sp_tsx_history.csv](Starter_Code/Resources/sp_tsx_history.csv)
 
 * [l_historical.csv](Starter_Code/Resources/l_historical.csv)
