@@ -31,7 +31,7 @@ All portfolio data was provided by the University of Toronto's School of Continu
 
 ![combined-rolling-std](Images/combined-rolling-std.png)
 
-## Exponentially Weighted Moving Average
+## Exponentially Weighted 21-Day Moving Average
 
 ![ewma](Images/ewma.png)
 
