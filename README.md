@@ -1,123 +1,87 @@
-# Portfolio_Analysis
+# Portfolio Analysis
 
-## Background
+![Portfolio Analysis](Images/portfolio-analysis.png)
 
-Harold's company has been investing in algorithmic trading strategies. Some of the investment managers love them, some hate them, but they all think their way is best.
+## Description
+This is a quantitative portfolio analysis of mutual, hedge fund, algorithmic and custom portfolios to assess overall performance. Performance is measured to derrmine the best across multiple areas including volatility, returns, risk and Sharpe ratios.
 
-You just learned these quantitative analysis techniques with Python and Pandas, so Harold has come to you with a challenge—to help him determine which portfolio is performing the best across multiple areas: volatility, returns, risk, and Sharpe ratios.
+The portfolios included in this analysis are Berkshire Hathaway Inc, Soros Fund Management LLC, Paulson & CO. Inc., Tiger Global Management LLC and 2 algorithmics named 'Algo 1' and 'Algo 2'. A custom portfolio consisting of SHOP, TSLA and AAPL were selected. The S&P TSX 60 Index is our benchmark for the overall market.
 
-You need to create a tool (an analysis notebook) that analyzes and visualizes the major metrics of the portfolios across all of these areas, and determine which portfolio outperformed the others. You will be given the historical daily returns of several portfolios: some from the firm's algorithmic portfolios, some that represent the portfolios of famous "whale" investors like Warren Buffett, and some from the big hedge and mutual funds. You will then use this analysis to create a custom portfolio of stocks and compare its performance to that of the other portfolios, as well as the larger market ([S&P TSX 60 Index](https://en.wikipedia.org/wiki/S%26P/TSX_60)).
+## Libraries
+This project requires the pandas, numpy, datetime and matplotlib libraries.
 
-For this homework assignment, you have three main tasks:
+## Data Sources
+All portfolio data was provided by the University of Toronto's School of Continuing Studies Fintech bootcamp. Custom portfolio ticker data was obtained via [Google Sheets](https://docs.google.com/spreadsheets/).
 
-1. [Read in and Wrangle Returns Data](#Prepare-the-Data)
+# Analysis Charts
 
-2. [Determine Success of Each Portfolio](#Conduct-Quantitative-Analysis)
+## Daily Returns
+![daily-returns](Images/daily-returns.png)
 
-3. [Choose and Evaluate a Custom Portfolio](#Create-a-Custom-Portfolio)
+## Cumulative Returns
+![cumulative-returns](Images/cumulative-returns.png)
 
----
+## Standard Deviation Boxplots
 
-## Instructions
+![whale-boxplot](Images/whale-boxplot.png)
 
-**Files:**
+![algo-boxplot](Images/algo-boxplot.png)
 
-* [Whale Analysis Starter Code](Starter_Code/whale_analysis.ipynb)
+## Combined 21-Day Rolling Standard Deviation
 
-* [algo_returns.csv](Starter_Code/Resources/algo_returns.csv)
+![combined-rolling-std](Images/combined-rolling-std.png)
 
-* [otex_historical.csv](Starter_Code/Resources/otex_historical.csv)
-z 
-* [sp_tsx_history.csv](Starter_Code/Resources/sp_tsx_history.csv)
+## Correlation Matrix
 
-* [l_historical.csv](Starter_Code/Resources/l_historical.csv)
+![correlation-matrix-all](Images/correlation-matrix-all.png)
 
-* [shop_historical.csv](Starter_Code/Resources/shop_historical.csv)
+## Custom Portfolio Rolling 60-Day Beta
 
-* [whale_returns.csv](Starter_Code/Resources/whale_returns.csv)
+![rolling-60day-all](Images/rolling-60day-beta-all.png)
 
-### Prepare the Data
+## Sharpe Ratios
 
-First, read and clean several CSV files for analysis. The CSV files include whale portfolio returns, algorithmic trading portfolio returns, and S&P TSX 60 Index historical prices. Use the starter code to complete the following steps:
+![sharpe-ratios-all](Images/sharpe-ratios-all.png)
 
-1. Use Pandas to read the following CSV files as a DataFrame. Be sure to convert the dates to a `DateTimeIndex`.
 
-    * `whale_returns.csv`: Contains returns of some famous "whale" investors' portfolios.
+# Summary Analysis
 
-    * `algo_returns.csv`: Contains returns from the in-house trading algorithms from Harold's company.
+## a) Determine whether the algorithmic strategies outperform both the market (S&P TSX 60) and the mutual and hedge fund portfolios.
 
-    * `sp_tsx_history.csv`: Contains historical closing prices of the S&P TSX 60 Index.
+Assessing the algorithmic portfolios' performance compared to the mutual and hedge fund's, let's break down the evaluated metrics:
 
-2. Detect and remove null values.
+1. <strong>21-day & Annualized Standard Deviation (SD) </strong> - 
+    Algo 1 falls in the middle of the pack with a 21-day SD of 0.8% and annualized SD of 12%. Algo 2 also falls in the middle of the pack with 0.8% and 13%, respectively. Both are not the most volatile nor the least in these measures.
+    
+2. <strong>Correlation</strong> - 
+    Algo 1 is the least positively correlated compared to every other portfolio and the S&P TSX 60. Algo 2 is postively correlated with the Soros Management Fund and the S&P TSX 60 at 83% and 73%, respectively. It is the least positively correlated with Algo 1 at 28.5%.
+    
+4. <strong>Boxplot</strong> - 
+    Algo 1's box plot displays the most positive amd highest cumulative returns compared to all other portfolios. Algo 2's boxplot displays a large number cumulative losses.
 
-3. If any columns have dollar signs or characters other than numeric values, remove those characters and convert the data types as needed.
+5. <strong>Sharpe Ratio</strong> -
+    Algo 1's Sharpe ratio sits at 1.49. The runner-up is Berkshire Hathaway at 0.47. While Algo 2 sits in 3rd place of the group at 0.39.
+    
+6. <strong>Exponentially Weighted Moving Average (EWM) with 21day Half-Life</strong> -
+    However in this metric, both Algo 1 has a greater drawdown than Algo 2, but the overall top performers are Berkshire Hathaway and Tiger Global.
+    
+Overall, Algo 1 outperforms all portfolios by a significant margin in this performance analysis. While Algo 2 falls behind Berkshire Hathaway for 2nd best performing. The only caveat is the EWM metric where Algo 1 experiences a major drawdown and slips behind Berkshire Hathaway and Tiger Global who become the top performers.
 
-4. The whale portfolios and algorithmic portfolio CSV files contain daily returns, but the S&P TSX 60 CSV file contains closing prices. Convert the S&P TSX 60 closing prices to daily returns.
+## b) How does the custom portfolio perform?
 
-5. Join `Whale Returns`, `Algorithmic Returns`, and the `S&P TSX 60 Returns` into a single DataFrame with columns for each portfolio's returns.
+The breakdown of the metrics are as follows:
 
-    ![returns-dataframe.png](Images/returns-dataframe.png)
+1. <strong>21-day Standard Deviation</strong> - 
+    The custom portfolio presents a highly volatile STD with the highest of the group at 29%.
+    
+2. <strong>Correlation</strong> - 
+    My portfolio is the least postively correlated with Algo 1 at 17%. It is most positively correlated to Berkshire Hathaway at 62%. While it's correlation with all other portfolios sit within the range of 32-54%.
+    
+3. <strong>60-Day Beta</strong> - 
+    My portfolio is more volatile than the S&P TSX 60 given that it has has a 60-day beta mean of 1.24 with a min at 0.35 and a max at 2.21.
 
-### Conduct Quantitative Analysis
+4. <strong>Sharpe Ratio</strong> - 
+    My portfolio is only one of two portfolios to score above 1. It trails behind Algo 1's score of 1.5.
+    
+Overall, the custom portfolio performs well compared to the other portfolios. It is a suitable portfolio for someone who has a high risk tolerance due to its level of volatility given it's 21-day standard deviation and 60-day Beta metrics. However, it's Sharpe ratio indicates there is good excess reward to its risk.
 
-Analyze the data to see if any of the portfolios outperform the stock market (i.e., the S&P TSX 60).
-
-#### Performance Analysis
-
-1. Calculate and plot daily returns of all portfolios.
-
-2. Calculate and plot cumulative returns for all portfolios. Does any portfolio outperform the S&P TSX 60?
-
-#### Risk Analysis
-
-1. Create a box plot for each of the returns. 
-
-2. Calculate the standard deviation for each portfolio. 
-
-3. Determine which portfolios are riskier than the S&P TSX 60
-
-4. Calculate the Annualized Standard Deviation.
-
-#### Rolling Statistics
-
-1. Calculate and plot the rolling standard deviation for all portfolios using a 21-day window.
-
-2. Calculate and plot the correlation between each stock to determine which portfolios may mimick the S&P TSX 60.
-
-3. Choose one portfolio, then calculate and plot the 60-day rolling beta for it and the S&P TSX 60.
-
-#### Rolling Statistics Challenge: Exponentially Weighted Average
-
-An alternative method to calculate a rolling window is to take the exponentially weighted moving average. This is like a moving window average, but it assigns greater importance to more recent observations. Try calculating the [`ewm`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.ewm.html) with a 21-day half-life.
-
-### Sharpe Ratios
-
-Investment managers and their institutional investors look at the return-to-risk ratio, not just the returns. After all, if you have two portfolios that each offer a 10% return, yet one is lower risk, you would invest in the lower-risk portfolio, right?
-
-1. Using the daily returns, calculate and visualize the Sharpe ratios using a bar plot.
-
-2. Determine whether the algorithmic strategies outperform both the market (S&P TSX 60) and the whales portfolios.
-
-### Create a Custom Portfolio
-
-Harold is ecstatic that you were able to help him prove that the algorithmic trading portfolios are doing so well compared to the market and whales portfolios. However, now you are wondering whether you can choose your own portfolio that performs just as well as the algorithmic portfolios. Investigate by doing the following:
-
-1. Visit [Google Sheets](https://docs.google.com/spreadsheets/) and use the built-in Google Finance function to choose 3-5 stocks for your portfolio.
-
-2. Download the data as CSV files and calculate the portfolio returns.
-
-3. Calculate the weighted returns for your portfolio, assuming equal number of shares per stock.
-
-4. Add your portfolio returns to the DataFrame with the other portfolios.
-
-5. Run the following analyses:
-
-    * Calculate the Annualized Standard Deviation.
-    * Calculate and plot rolling `std` with a 21-day window.
-    * Calculate and plot the correlation.
-    * Calculate and plot the 60-day rolling beta for your portfolio compared to the S&P 60 TSX.
-    * Calculate the Sharpe ratios and generate a bar plot.
-
-4. How does your portfolio do?
-
-**Note:** In the Resources folder, you'll find CSV files for OTEX, L and SHOP. These are provided as a backup in the event that the Google Finance function is not functioning properly.
