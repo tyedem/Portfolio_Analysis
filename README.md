@@ -48,7 +48,7 @@ All portfolio data was provided by the University of Toronto's School of Continu
 
 ## a) Determine whether the algorithmic strategies outperform both the market (S&P TSX 60) and the mutual and hedge fund portfolios.
 
-Assessing the algorithmic portfolios' performance compared to the mutual and hedge fund's, let's break down the evaluated metrics:
+In order to asses the algorithmic portfolios' performance compared to the mutual and hedge funds' portfolios, let's break down the evaluated metrics:
 
 1. <strong>21-day & Annualized Standard Deviation (SD) </strong> - 
     Algo 1 falls in the middle of the pack with a 21-day SD of 0.8% and annualized SD of 12%. Algo 2 also falls in the middle of the pack with 0.8% and 13%, respectively. Both are not the most volatile nor the least in these measures.
