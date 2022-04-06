@@ -31,6 +31,10 @@ All portfolio data was provided by the University of Toronto's School of Continu
 
 ![combined-rolling-std](Images/combined-rolling-std.png)
 
+## Exponentially Weighted Moving Average
+
+![ewma](Images/ewma.png)
+
 ## Correlation Matrix
 
 ![correlation-matrix-all](Images/correlation-matrix-all.png)
