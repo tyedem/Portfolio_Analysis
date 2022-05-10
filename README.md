@@ -3,7 +3,7 @@
 ![Portfolio Analysis](Images/portfolio-analysis.png)
 
 ## Description
-This is a quantitative portfolio analysis of mutual, hedge fund, algorithmic and custom portfolios to assess overall performance. Performance is measured to derrmine the best across multiple areas including volatility, returns, risk and Sharpe ratios.
+This is a quantitative portfolio analysis of mutual, hedge fund, algorithmic and custom portfolios to assess overall performance. Performance is measured to determine the best across multiple areas including volatility, returns, risk and Sharpe ratios.
 
 The portfolios included in this analysis are Berkshire Hathaway Inc, Soros Fund Management LLC, Paulson & CO. Inc., Tiger Global Management LLC and 2 algorithmics named 'Algo 1' and 'Algo 2'. A custom portfolio consisting of SHOP, TSLA and AAPL were selected. The S&P TSX 60 Index is our benchmark for the overall market.
 
